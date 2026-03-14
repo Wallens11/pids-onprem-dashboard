@@ -51,6 +51,36 @@ pnpm build
 pnpm start
 ```
 
+## Screenshots
+
+Add these images to a `docs/` folder so the repository preview looks stronger at a glance:
+
+```text
+docs/
+  overview.png
+  displays.png
+  timetable.png
+  announcements.png
+```
+
+Recommended captions:
+
+- `overview.png`: Operations overview with KPI cards, trend charts, and recent activity
+- `displays.png`: Display fleet management with health, templates, and bulk actions
+- `timetable.png`: Timetable control surface for schedule updates and publishing
+- `announcements.png`: Announcement scheduling workflow with priority and targeting
+
+Once the screenshots exist, you can place them here:
+
+```md
+## Gallery
+
+![Operations Overview](docs/overview.png)
+![Display Management](docs/displays.png)
+![Timetable Management](docs/timetable.png)
+![Announcements Workflow](docs/announcements.png)
+```
+
 ## Portfolio Notes
 
 This repository is positioned as a product-style admin dashboard concept. The current implementation uses mock operational data and is a good base for future improvements such as:
@@ -59,12 +89,3 @@ This repository is positioned as a product-style admin dashboard concept. The cu
 - Authentication and role-based access
 - Search, filtering, and bulk actions
 - Real-time status updates via websockets or polling
-
-## Suggested Screenshot Set
-
-If you want to showcase this in GitHub or your CV portfolio, the strongest screenshots are:
-
-- dashboard overview
-- displays management table
-- train timetable management
-- announcement management modal or table

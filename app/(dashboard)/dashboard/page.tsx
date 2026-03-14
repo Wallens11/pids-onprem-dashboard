@@ -5,14 +5,17 @@ import { StatsCard } from "@/components/dashboard/stats-card"
 import { DataTable } from "@/components/dashboard/data-table"
 import { StatusBadge } from "@/components/dashboard/status-badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Monitor, Train, Megaphone, AlertTriangle, RefreshCw, Clock } from "lucide-react"
+import { Monitor, Train, Megaphone, AlertTriangle, RefreshCw, Clock, Siren, WifiOff } from "lucide-react"
 import {
   auditLogs,
+  announcements,
+  emergencies,
   getOnlineDisplaysCount,
   getTodayTrainsCount,
   getActiveAnnouncementsCount,
   getAlertsCount,
   displays,
+  trains,
 } from "@/lib/mock-data"
 import { Bar, BarChart, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts"
 
@@ -80,6 +83,10 @@ export default function OverviewPage() {
   const todayTrains = getTodayTrainsCount()
   const activeAnnouncements = getActiveAnnouncementsCount()
   const alerts = getAlertsCount()
+  const offlineDisplays = displays.filter((display) => display.status === "offline")
+  const delayedServices = trains.filter((train) => train.status === "Delayed" || train.status === "Cancelled")
+  const activeEmergency = emergencies.find((emergency) => emergency.active)
+  const pinnedAnnouncements = announcements.filter((announcement) => announcement.pinned).slice(0, 2)
 
   return (
     <div className="flex flex-col h-full">
@@ -159,6 +166,118 @@ export default function OverviewPage() {
                     <Bar dataKey="count" fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-[1.3fr_0.7fr] gap-6">
+          <Card className="bg-card border-border">
+            <CardHeader className="flex flex-row items-center justify-between">
+              <CardTitle className="text-base font-medium">Operational Watchlist</CardTitle>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <AlertTriangle className="w-4 h-4" />
+                <span>{alerts} active items</span>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="rounded-xl border border-border bg-muted/30 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <WifiOff className="w-4 h-4 text-warning" />
+                  <h3 className="font-medium">Offline Displays</h3>
+                </div>
+                <div className="space-y-3">
+                  {offlineDisplays.length > 0 ? (
+                    offlineDisplays.map((display) => (
+                      <div key={display.displayId} className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="font-medium">{display.name}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {display.displayId} · Last seen{" "}
+                            {new Date(display.lastSeen).toLocaleString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </p>
+                        </div>
+                        <StatusBadge status="offline" />
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-muted-foreground">No offline displays in the current snapshot.</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-border bg-muted/30 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Train className="w-4 h-4 text-primary" />
+                  <h3 className="font-medium">Service Exceptions</h3>
+                </div>
+                <div className="space-y-3">
+                  {delayedServices.length > 0 ? (
+                    delayedServices.map((train) => (
+                      <div key={train.trainNo} className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="font-medium">
+                            {train.trainNo} · {train.serviceName}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Platform {train.platform} · {train.origin} {"->"} {train.destination}
+                          </p>
+                        </div>
+                        <StatusBadge status={train.status} />
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-muted-foreground">No delayed or cancelled services right now.</p>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card border-border">
+            <CardHeader>
+              <CardTitle className="text-base font-medium">Broadcast Readiness</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="rounded-xl border border-border p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Siren className="w-4 h-4 text-destructive" />
+                    <span className="font-medium">Emergency Channel</span>
+                  </div>
+                  <StatusBadge status={activeEmergency ? "critical" : "success"} />
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {activeEmergency
+                    ? activeEmergency.message
+                    : "No active emergency override. Broadcast channel is ready for drill or live incident use."}
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-border p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Megaphone className="w-4 h-4 text-primary" />
+                    <span className="font-medium">Pinned Announcements</span>
+                  </div>
+                  <span className="text-sm text-muted-foreground">{pinnedAnnouncements.length} queued</span>
+                </div>
+                <div className="space-y-3">
+                  {pinnedAnnouncements.map((announcement) => (
+                    <div key={announcement.id} className="rounded-lg bg-muted/40 p-3">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="font-medium text-sm">{announcement.title}</p>
+                        <StatusBadge status={announcement.priority} />
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1">{announcement.message}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </CardContent>
           </Card>
