@@ -71,8 +71,6 @@ Recommended captions:
 - `announcements.png`: Announcement scheduling workflow with priority and targeting
 
 ## Gallery
-
-![Operations Overview](docs/overview.png)
 ![Display Management](docs/displays.png)
 ![Timetable Management](docs/timetable.png)
 ![Announcements Workflow](docs/announcements.png)
