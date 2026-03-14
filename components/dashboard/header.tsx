@@ -50,7 +50,7 @@ export function Header({ title, subtitle }: HeaderProps) {
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>
               <div>
-                <p className="font-medium">Operations Control</p>
+                <p className="font-medium">Rail Operations Control</p>
                 <p className="text-xs text-muted-foreground">ops.control@pids.local</p>
               </div>
             </DropdownMenuLabel>

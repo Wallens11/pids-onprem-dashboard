@@ -1,4 +1,4 @@
-// Mock data for PIDS Dashboard
+// Mock operational data for the PIDS admin dashboard portfolio demo.
 
 export interface Location {
   id: string
@@ -329,8 +329,8 @@ export const trains: Train[] = [
 export const announcements: Announcement[] = [
   {
     id: "ann-1",
-    title: "Scheduled Maintenance",
-    message: "Platform 3 will be under maintenance from 22:00 - 05:00. Please use alternative platforms.",
+    title: "Night Maintenance Window",
+    message: "Platform 3 display controllers will be patched between 22:00 and 05:00. Passenger traffic is redirected to adjacent screens.",
     priority: "medium",
     targetType: "location",
     targetIds: ["loc-1", "loc-2"],
@@ -342,8 +342,8 @@ export const announcements: Announcement[] = [
   },
   {
     id: "ann-2",
-    title: "Welcome Message",
-    message: "Welcome to KAI Railway. Thank you for choosing our service.",
+    title: "Passenger Welcome Loop",
+    message: "Welcome to the station. Please prepare your boarding pass and follow platform instructions shown on nearby displays.",
     priority: "low",
     targetType: "all",
     targetIds: [],
@@ -355,8 +355,8 @@ export const announcements: Announcement[] = [
   },
   {
     id: "ann-3",
-    title: "Holiday Schedule",
-    message: "Special holiday schedule in effect from January 15-20. Please check updated timetables.",
+    title: "Peak Travel Schedule",
+    message: "Peak travel timetable is active from January 15 to January 20. Departure boards and hall displays will prioritize updated boarding information.",
     priority: "high",
     targetType: "all",
     targetIds: [],
@@ -368,8 +368,8 @@ export const announcements: Announcement[] = [
   },
   {
     id: "ann-4",
-    title: "New Route Opening",
-    message: "Exciting news! New direct route to Cirebon starting February 1st.",
+    title: "New Corridor Launch",
+    message: "Direct corridor service to Cirebon becomes available on February 1. Promotional content has been scheduled for main hall displays.",
     priority: "medium",
     targetType: "location",
     targetIds: ["loc-3"],
@@ -381,8 +381,8 @@ export const announcements: Announcement[] = [
   },
   {
     id: "ann-5",
-    title: "Ticket Counter Hours",
-    message: "Ticket counters open 04:00 - 22:00 daily.",
+    title: "Service Counter Hours",
+    message: "Service counters operate daily from 04:00 to 22:00. Self-service kiosks remain available outside staffed hours.",
     priority: "low",
     targetType: "all",
     targetIds: [],
@@ -397,7 +397,7 @@ export const announcements: Announcement[] = [
 export const emergencies: Emergency[] = [
   {
     id: "emg-1",
-    message: "Test emergency broadcast - This is a drill",
+    message: "Emergency drill broadcast for quarterly evacuation rehearsal",
     severity: "warning",
     targetType: "all",
     targetIds: [],
@@ -407,7 +407,7 @@ export const emergencies: Emergency[] = [
   },
   {
     id: "emg-2",
-    message: "Temporary evacuation of Platform 2 due to suspicious package",
+    message: "Temporary evacuation notice for Platform 2 pending field inspection",
     severity: "critical",
     targetType: "location",
     targetIds: ["loc-2"],
@@ -458,11 +458,11 @@ export const templates: Template[] = [
 export const media: Media[] = [
   {
     id: "med-1",
-    fileName: "kai-logo.png",
+    fileName: "railops-brandmark.png",
     type: "image",
     size: "245 KB",
     tags: ["logo", "branding"],
-    uploadedBy: "admin@kai.id",
+    uploadedBy: "ops.admin@pids.local",
     uploadedAt: "2026-01-01T08:00:00",
     url: "/kai-railway-logo.jpg",
   },
@@ -472,7 +472,7 @@ export const media: Media[] = [
     type: "video",
     size: "15.2 MB",
     tags: ["safety", "instruction"],
-    uploadedBy: "admin@kai.id",
+    uploadedBy: "ops.admin@pids.local",
     uploadedAt: "2026-01-02T10:00:00",
     url: "/safety-instruction-video-thumbnail.jpg",
   },
@@ -482,7 +482,7 @@ export const media: Media[] = [
     type: "image",
     size: "890 KB",
     tags: ["promotion", "banner"],
-    uploadedBy: "operator@kai.id",
+    uploadedBy: "content.operator@pids.local",
     uploadedAt: "2026-01-05T14:00:00",
     url: "/railway-promotional-banner.jpg",
   },
@@ -492,7 +492,7 @@ export const media: Media[] = [
     type: "image",
     size: "1.2 MB",
     tags: ["map", "navigation"],
-    uploadedBy: "admin@kai.id",
+    uploadedBy: "ops.admin@pids.local",
     uploadedAt: "2026-01-03T09:00:00",
     url: "/train-station-map-layout.jpg",
   },
@@ -502,7 +502,7 @@ export const media: Media[] = [
     type: "video",
     size: "22.5 MB",
     tags: ["promotion", "holiday"],
-    uploadedBy: "operator@kai.id",
+    uploadedBy: "content.operator@pids.local",
     uploadedAt: "2026-01-08T11:00:00",
     url: "/holiday-travel-promotion-video.jpg",
   },
@@ -512,25 +512,25 @@ export const media: Media[] = [
     type: "image",
     size: "456 KB",
     tags: ["background", "template"],
-    uploadedBy: "admin@kai.id",
+    uploadedBy: "ops.admin@pids.local",
     uploadedAt: "2026-01-04T16:00:00",
     url: "/train-schedule-background-dark.jpg",
   },
 ]
 
 export const users: User[] = [
-  { id: "usr-1", name: "Budi Santoso", email: "budi.santoso@kai.id", role: "Admin", status: "active" },
-  { id: "usr-2", name: "Siti Rahayu", email: "siti.rahayu@kai.id", role: "Operator", status: "active" },
-  { id: "usr-3", name: "Ahmad Hidayat", email: "ahmad.hidayat@kai.id", role: "Operator", status: "active" },
-  { id: "usr-4", name: "Dewi Lestari", email: "dewi.lestari@kai.id", role: "Viewer", status: "active" },
-  { id: "usr-5", name: "Eko Prasetyo", email: "eko.prasetyo@kai.id", role: "Operator", status: "inactive" },
+  { id: "usr-1", name: "Raka Pratama", email: "ops.admin@pids.local", role: "Admin", status: "active" },
+  { id: "usr-2", name: "Nadia Putri", email: "station.ops@pids.local", role: "Operator", status: "active" },
+  { id: "usr-3", name: "Farhan Akbar", email: "content.operator@pids.local", role: "Operator", status: "active" },
+  { id: "usr-4", name: "Salsa Anindya", email: "viewer.audit@pids.local", role: "Viewer", status: "active" },
+  { id: "usr-5", name: "Bagas Mahendra", email: "backup.operator@pids.local", role: "Operator", status: "inactive" },
 ]
 
 export const auditLogs: AuditLog[] = [
   {
     id: "log-1",
     time: "2026-01-10T14:30:00",
-    user: "budi.santoso@kai.id",
+    user: "ops.admin@pids.local",
     action: "UPDATE",
     entityType: "display",
     entityId: "DSP-001",
@@ -539,7 +539,7 @@ export const auditLogs: AuditLog[] = [
   {
     id: "log-2",
     time: "2026-01-10T14:15:00",
-    user: "siti.rahayu@kai.id",
+    user: "station.ops@pids.local",
     action: "CREATE",
     entityType: "announcement",
     entityId: "ann-3",
@@ -548,7 +548,7 @@ export const auditLogs: AuditLog[] = [
   {
     id: "log-3",
     time: "2026-01-10T13:45:00",
-    user: "ahmad.hidayat@kai.id",
+    user: "content.operator@pids.local",
     action: "UPDATE",
     entityType: "train",
     entityId: "KA-003",
@@ -557,7 +557,7 @@ export const auditLogs: AuditLog[] = [
   {
     id: "log-4",
     time: "2026-01-10T12:30:00",
-    user: "budi.santoso@kai.id",
+    user: "ops.admin@pids.local",
     action: "DELETE",
     entityType: "media",
     entityId: "med-7",
@@ -566,7 +566,7 @@ export const auditLogs: AuditLog[] = [
   {
     id: "log-5",
     time: "2026-01-10T11:00:00",
-    user: "siti.rahayu@kai.id",
+    user: "station.ops@pids.local",
     action: "TRIGGER",
     entityType: "emergency",
     entityId: "emg-2",
@@ -575,7 +575,7 @@ export const auditLogs: AuditLog[] = [
   {
     id: "log-6",
     time: "2026-01-10T10:30:00",
-    user: "ahmad.hidayat@kai.id",
+    user: "content.operator@pids.local",
     action: "ASSIGN",
     entityType: "template",
     entityId: "tpl-1",
@@ -584,7 +584,7 @@ export const auditLogs: AuditLog[] = [
   {
     id: "log-7",
     time: "2026-01-10T09:15:00",
-    user: "budi.santoso@kai.id",
+    user: "ops.admin@pids.local",
     action: "CREATE",
     entityType: "user",
     entityId: "usr-5",
@@ -611,7 +611,7 @@ export const auditLogs: AuditLog[] = [
   {
     id: "log-10",
     time: "2026-01-09T18:30:00",
-    user: "siti.rahayu@kai.id",
+    user: "station.ops@pids.local",
     action: "UPDATE",
     entityType: "announcement",
     entityId: "ann-2",

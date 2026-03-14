@@ -82,7 +82,7 @@ export default function TrainsPage() {
       cell: (train: Train) => (
         <div className="flex items-center gap-2">
           <span className="text-muted-foreground">{train.origin}</span>
-          <span className="text-muted-foreground">→</span>
+          <span className="text-muted-foreground">-&gt;</span>
           <span>{train.destination}</span>
         </div>
       ),

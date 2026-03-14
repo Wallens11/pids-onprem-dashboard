@@ -4,6 +4,10 @@ Admin dashboard concept for managing an on-prem Passenger Information Display Sy
 
 This project was initially scaffolded from a v0 export, then adapted into a local Next.js codebase and refined as a portfolio-ready dashboard prototype. It focuses on the operational surface of a station display management system: display monitoring, train timetable control, announcements, emergency broadcast management, media assets, audit logs, and settings.
 
+## Why This Project Exists
+
+I built this as a product-style admin dashboard concept to show how a generated UI can be turned into a more intentional engineering project. The goal was not just to render screens, but to shape the export into a believable operations console with reusable components, route structure, realistic mock data, and a cleaner presentation for portfolio review.
+
 ## Highlights
 
 - Dashboard overview with operational KPIs and recent activity
@@ -11,6 +15,15 @@ This project was initially scaffolded from a v0 export, then adapted into a loca
 - Timetable, announcements, emergency broadcast, media, users, logs, and settings sections
 - Reusable UI components built with Next.js, React, Radix UI, and Tailwind CSS
 - Mock data layer suitable for replacing with API integrations later
+
+## What I Changed From The Initial Export
+
+- imported the downloaded v0 ZIP into a clean local repository
+- installed and validated the full Next.js app locally
+- renamed and repositioned the project as a portfolio-ready admin console
+- refined visible UI copy and navigation branding
+- replaced several generic demo strings with more neutral operational content
+- kept the structure ready for future API, auth, and real-time integrations
 
 ## Tech Stack
 
@@ -46,3 +59,12 @@ This repository is positioned as a product-style admin dashboard concept. The cu
 - Authentication and role-based access
 - Search, filtering, and bulk actions
 - Real-time status updates via websockets or polling
+
+## Suggested Screenshot Set
+
+If you want to showcase this in GitHub or your CV portfolio, the strongest screenshots are:
+
+- dashboard overview
+- displays management table
+- train timetable management
+- announcement management modal or table
