@@ -53,7 +53,7 @@ pnpm start
 
 ## Screenshots
 
-Add these images to a `docs/` folder so the repository preview looks stronger at a glance:
+Gallery assets are stored in the `docs/` folder so the repository preview looks stronger at a glance:
 
 ```text
 docs/
@@ -63,8 +63,6 @@ docs/
   announcements.png
 ```
 
-The folder already exists in this repo, so you can drop the screenshots in directly when you're ready.
-
 Recommended captions:
 
 - `overview.png`: Operations overview with KPI cards, trend charts, and recent activity
@@ -72,16 +70,12 @@ Recommended captions:
 - `timetable.png`: Timetable control surface for schedule updates and publishing
 - `announcements.png`: Announcement scheduling workflow with priority and targeting
 
-Once the screenshots exist, you can place them here:
-
-```md
 ## Gallery
 
 ![Operations Overview](docs/overview.png)
 ![Display Management](docs/displays.png)
 ![Timetable Management](docs/timetable.png)
 ![Announcements Workflow](docs/announcements.png)
-```
 
 ## Portfolio Notes
 
