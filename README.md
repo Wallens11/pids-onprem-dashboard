@@ -63,6 +63,8 @@ docs/
   announcements.png
 ```
 
+The folder already exists in this repo, so you can drop the screenshots in directly when you're ready.
+
 Recommended captions:
 
 - `overview.png`: Operations overview with KPI cards, trend charts, and recent activity
